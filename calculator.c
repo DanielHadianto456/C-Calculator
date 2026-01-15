@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define ADDITION_OPTION '+'
+#define SUBTRACTION_OPTION '-'
+#define MULTIPLICATION_OPTION '*'
+#define DIVISION_OPTION '/'
+#define FINISHED_OPTION '='
+
+int main()
+{
+  int inputtedNumber, currentTotal;
+  char currentOperationOption;
+  bool isFinished = false;
+
+  printf("\nInput your number here: ");
+  scanf("%i", &currentTotal);
+  
+  getchar();
+
+  do {
+    printf("\nInput your operation (Supported operations %c, %c, %c, %c, %c): ", 
+           ADDITION_OPTION, 
+           SUBTRACTION_OPTION, 
+           MULTIPLICATION_OPTION, 
+           DIVISION_OPTION,
+           FINISHED_OPTION
+         );
+    currentOperationOption = getchar();
+
+    if (currentOperationOption != ADDITION_OPTION && 
+        currentOperationOption != SUBTRACTION_OPTION && 
+        currentOperationOption != DIVISION_OPTION && 
+        currentOperationOption != MULTIPLICATION_OPTION &&
+        currentOperationOption != FINISHED_OPTION
+      ) {
+      printf("\nInvalid operation type selected! Selected = %c\n", currentOperationOption);
+
+      continue;
+    }
+
+    if (currentOperationOption == FINISHED_OPTION) {
+      isFinished = true;
+      break;
+    }
+
+    printf("\nInput your next number: ");
+    scanf("%i", &inputtedNumber);
+
+    switch (currentOperationOption) {
+      case ADDITION_OPTION:
+        currentTotal += inputtedNumber;
+
+        break;
+
+      case SUBTRACTION_OPTION:
+        currentTotal -= inputtedNumber;
+      
+        break;
+ 
+      case MULTIPLICATION_OPTION:
+        currentTotal *= inputtedNumber;
+      
+        break;
+
+      case DIVISION_OPTION:
+        currentTotal /= inputtedNumber;
+      
+        break;
+    }
+
+    getchar();
+  } while(!isFinished); 
+
+  printf("\n%i\n", currentTotal);
+
+  return 0;
+}
