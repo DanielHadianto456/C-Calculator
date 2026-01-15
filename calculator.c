@@ -23,5 +23,27 @@ int main()
         );
   currentOperationOption = getchar();
 
+  switch (currentOperationOption) {
+    case ADDITION_OPTION:
+      
+      break;
+
+    case SUBTRACTION_OPTION:
+      
+      break;
+
+    case MULTIPLICATION_OPTION:
+      
+      break;
+
+    case DIVISION_OPTION:
+      
+      break;
+
+    default:
+
+      break;
+  }
+
   return 0;
 }
