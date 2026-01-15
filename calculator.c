@@ -15,7 +15,12 @@ int main()
   
   getchar();
 
-  printf("\nInput your operation (Supported operations '+', '-', '*', '/'): ");
+  printf("\nInput your operation (Supported operations %c, %c, %c, %c): ", 
+         ADDITION_OPTION, 
+         SUBTRACTION_OPTION, 
+         MULTIPLICATION_OPTION, 
+         DIVISION_OPTION
+        );
   currentOperationOption = getchar();
 
   return 0;
