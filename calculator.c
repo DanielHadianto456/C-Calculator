@@ -7,11 +7,11 @@
 
 int main()
 {
-  int inputtedNumber;
+  int inputtedNumber, currentTotal;
   char currentOperationOption;
 
   printf("\nInput your number here: ");
-  scanf("%i", &inputtedNumber);
+  scanf("%i", &currentTotal);
   
   getchar();
 
@@ -23,27 +23,36 @@ int main()
         );
   currentOperationOption = getchar();
 
+  printf("\nInput your next number: ");
+  scanf("%i", &inputtedNumber);
+
   switch (currentOperationOption) {
     case ADDITION_OPTION:
-      
+      currentTotal += inputtedNumber;
+
       break;
 
     case SUBTRACTION_OPTION:
+      currentTotal -= inputtedNumber;
       
       break;
 
     case MULTIPLICATION_OPTION:
+      currentTotal *= inputtedNumber;
       
       break;
 
     case DIVISION_OPTION:
+      currentTotal /= inputtedNumber;
       
       break;
 
     default:
-
-      break;
+      printf("\nOops! Invalid input detected!");
+      return 0;
   }
+
+  printf("\n%i\n", currentTotal);
 
   return 0;
 }
