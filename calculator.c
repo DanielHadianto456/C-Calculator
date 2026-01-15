@@ -23,6 +23,16 @@ int main()
         );
   currentOperationOption = getchar();
 
+  if (currentOperationOption != ADDITION_OPTION && 
+      currentOperationOption != SUBTRACTION_OPTION && 
+      currentOperationOption != DIVISION_OPTION && 
+      currentOperationOption != MULTIPLICATION_OPTION
+    ) {
+    printf("\nInvalid operation type selected!\n");
+
+    return 0;
+  }
+
   printf("\nInput your next number: ");
   scanf("%i", &inputtedNumber);
 
@@ -46,10 +56,6 @@ int main()
       currentTotal /= inputtedNumber;
       
       break;
-
-    default:
-      printf("\nOops! Invalid input detected!");
-      return 0;
   }
 
   printf("\n%i\n", currentTotal);
