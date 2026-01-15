@@ -11,14 +11,13 @@ int main()
 {
   int inputtedNumber, currentTotal;
   char currentOperationOption;
-  bool isFinished = false;
 
   printf("\nInput your number here: ");
   scanf("%i", &currentTotal);
   
   getchar();
 
-  do {
+  while (true) {
     printf("\nInput your operation (Supported operations %c, %c, %c, %c, %c): ", 
            ADDITION_OPTION, 
            SUBTRACTION_OPTION, 
@@ -40,7 +39,6 @@ int main()
     }
 
     if (currentOperationOption == FINISHED_OPTION) {
-      isFinished = true;
       break;
     }
 
@@ -70,7 +68,7 @@ int main()
     }
 
     getchar();
-  } while(!isFinished); 
+  }; 
 
   printf("\n%i\n", currentTotal);
 
