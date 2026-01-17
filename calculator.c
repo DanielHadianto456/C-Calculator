@@ -7,6 +7,44 @@
 #define DIVISION_OPTION '/'
 #define FINISHED_OPTION '='
 
+bool validateInput(char operationInput)
+{
+  return (
+    operationInput == ADDITION_OPTION ||
+    operationInput == SUBTRACTION_OPTION ||
+    operationInput == MULTIPLICATION_OPTION ||
+    operationInput == DIVISION_OPTION ||
+    operationInput == FINISHED_OPTION
+  );
+}
+
+int calculateTotal(int total, int numberInput, char operationType)
+{
+  
+    switch (operationType) {
+      case ADDITION_OPTION:
+        return total + numberInput;
+
+      case SUBTRACTION_OPTION:
+        return total - numberInput;
+ 
+      case MULTIPLICATION_OPTION:
+        return total * numberInput;
+
+      case DIVISION_OPTION:
+        if (numberInput == 0) {
+          printf("\nCan't divide by 0!");
+        
+          return total;
+        }
+
+        return total / numberInput;
+
+      default:
+        return total;
+    }
+}
+
 int main()
 {
   int inputtedNumber, currentTotal;
@@ -27,12 +65,7 @@ int main()
          );
     currentOperationOption = getchar();
 
-    if (currentOperationOption != ADDITION_OPTION && 
-        currentOperationOption != SUBTRACTION_OPTION && 
-        currentOperationOption != DIVISION_OPTION && 
-        currentOperationOption != MULTIPLICATION_OPTION &&
-        currentOperationOption != FINISHED_OPTION
-      ) {
+    if (!validateInput(currentOperationOption)) {
       printf("\nInvalid operation type selected! Selected = %c\n", currentOperationOption);
 
       continue;
@@ -45,27 +78,7 @@ int main()
     printf("\nInput your next number: ");
     scanf("%i", &inputtedNumber);
 
-    switch (currentOperationOption) {
-      case ADDITION_OPTION:
-        currentTotal += inputtedNumber;
-
-        break;
-
-      case SUBTRACTION_OPTION:
-        currentTotal -= inputtedNumber;
-      
-        break;
- 
-      case MULTIPLICATION_OPTION:
-        currentTotal *= inputtedNumber;
-      
-        break;
-
-      case DIVISION_OPTION:
-        currentTotal /= inputtedNumber;
-      
-        break;
-    }
+    currentTotal = calculateTotal(currentTotal, inputtedNumber, currentOperationOption);
 
     getchar();
   }; 
