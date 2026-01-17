@@ -7,6 +7,17 @@
 #define DIVISION_OPTION '/'
 #define FINISHED_OPTION '='
 
+bool validateInput(char operationInput)
+{
+  return (
+    operationInput == ADDITION_OPTION ||
+    operationInput == SUBTRACTION_OPTION ||
+    operationInput == MULTIPLICATION_OPTION ||
+    operationInput == DIVISION_OPTION ||
+    operationInput == FINISHED_OPTION
+  );
+}
+
 int main()
 {
   int inputtedNumber, currentTotal;
@@ -27,12 +38,7 @@ int main()
          );
     currentOperationOption = getchar();
 
-    if (currentOperationOption != ADDITION_OPTION && 
-        currentOperationOption != SUBTRACTION_OPTION && 
-        currentOperationOption != DIVISION_OPTION && 
-        currentOperationOption != MULTIPLICATION_OPTION &&
-        currentOperationOption != FINISHED_OPTION
-      ) {
+    if (!validateInput(currentOperationOption)) {
       printf("\nInvalid operation type selected! Selected = %c\n", currentOperationOption);
 
       continue;
