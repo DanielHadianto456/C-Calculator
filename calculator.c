@@ -18,6 +18,33 @@ bool validateInput(char operationInput)
   );
 }
 
+int calculateTotal(int total, int numberInput, char operationType)
+{
+  
+    switch (operationType) {
+      case ADDITION_OPTION:
+        return total + numberInput;
+
+      case SUBTRACTION_OPTION:
+        return total - numberInput;
+ 
+      case MULTIPLICATION_OPTION:
+        return total * numberInput;
+
+      case DIVISION_OPTION:
+        if (numberInput == 0) {
+          printf("\nCan't divide by 0!");
+        
+          return total;
+        }
+
+        return total / numberInput;
+
+      default:
+        return total;
+    }
+}
+
 int main()
 {
   int inputtedNumber, currentTotal;
@@ -51,27 +78,7 @@ int main()
     printf("\nInput your next number: ");
     scanf("%i", &inputtedNumber);
 
-    switch (currentOperationOption) {
-      case ADDITION_OPTION:
-        currentTotal += inputtedNumber;
-
-        break;
-
-      case SUBTRACTION_OPTION:
-        currentTotal -= inputtedNumber;
-      
-        break;
- 
-      case MULTIPLICATION_OPTION:
-        currentTotal *= inputtedNumber;
-      
-        break;
-
-      case DIVISION_OPTION:
-        currentTotal /= inputtedNumber;
-      
-        break;
-    }
+    currentTotal = calculateTotal(currentTotal, inputtedNumber, currentOperationOption);
 
     getchar();
   }; 
